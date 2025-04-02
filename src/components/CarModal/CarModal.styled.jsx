@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -62,7 +62,7 @@ export const Year = styled.span`
 `;
 
 export const List = styled.ul`
-  font-family: 'ManropeRegular';
+  font-family: "ManropeRegular";
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 14px;
@@ -78,7 +78,7 @@ export const Item = styled.li`
   color: rgba(18, 20, 23, 0.5);
 
   &:not(:first-child)::before {
-    content: '|';
+    content: "|";
     margin-right: 6px;
   }
   &:first-child {
@@ -115,7 +115,7 @@ export const Description = styled.p`
 `;
 
 export const Text = styled.div`
-  font-family: 'ManropeMedium';
+  font-family: "ManropeMedium";
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -124,7 +124,7 @@ export const Text = styled.div`
 `;
 
 export const Accessories = styled.ul`
-  font-family: 'ManropeRegular';
+  font-family: "ManropeRegular";
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 4px;
@@ -134,7 +134,7 @@ export const Accessories = styled.ul`
 `;
 
 export const Functionalities = styled.ul`
-  font-family: 'ManropeRegular';
+  font-family: "ManropeRegular";
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 24px;
@@ -151,7 +151,7 @@ export const ConditionsWrap = styled.div`
 `;
 
 export const ConditionsItem = styled.p`
-  font-family: 'MontserratRegular';
+  font-family: "MontserratRegular";
   color: #363535;
 
   /* font-family: Montserrat; */
@@ -166,7 +166,7 @@ export const ConditionsItem = styled.p`
 `;
 
 export const ConditionsSpan = styled.span`
-  font-family: 'MontserratSemiBold';
+  font-family: "MontserratSemiBold";
   color: #3470ff;
   font-weight: 600;
 `;

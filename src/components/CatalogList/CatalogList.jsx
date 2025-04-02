@@ -1,16 +1,16 @@
-import CatalogListItem from 'components/CatalogListItem/CatalogListItem';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { HaveNotCars, ListOfCars } from './CatalogList.styled';
-import { Btn } from 'components/FavoriteCard/FavoritesCard.styled';
-import { CenteredColorRing } from 'pages/CatalogPage/CatalogPage.styled';
-import { ColorRing } from 'react-loader-spinner';
+import CatalogListItem from "components/CatalogListItem/CatalogListItem";
+import React from "react";
+import { useSelector } from "react-redux";
+import { HaveNotCars, ListOfCars } from "./CatalogList.styled";
+import { Btn } from "components/FavoriteCard/FavoritesCard.styled";
+import { CenteredColorRing } from "pages/CatalogPage/CatalogPage.styled";
+import { ColorRing } from "react-loader-spinner";
 import {
   getCars,
   getHideButton,
   getIsLoading,
   getTotalCount,
-} from '../../redux/selectors';
+} from "../../redux/selectors";
 
 const PAGE_SIZE = 12;
 
@@ -28,7 +28,7 @@ const CatalogList = ({ incrementPage, page }) => {
   return (
     <ListOfCars>
       {cars.length > 0 ? (
-        cars.map(car => {
+        cars.map((car) => {
           return <CatalogListItem key={car.id} car={car} />;
         })
       ) : (
@@ -48,7 +48,7 @@ const CatalogList = ({ incrementPage, page }) => {
             ariaLabel="color-ring-loading"
             wrapperStyle={{}}
             wrapperClass="color-ring-wrapper"
-            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
           />
         </CenteredColorRing>
       )}

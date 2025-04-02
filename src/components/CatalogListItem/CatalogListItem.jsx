@@ -10,8 +10,9 @@ import {
   SvgHeart,
   Year,
 } from "./CatalogListItem.styled";
-import CarModal from "components/CarModal/CarModal";
+// import CarModal from "components/CarModal/CarModal";
 import sprite from "../../images/sprite.svg";
+import { Link } from "react-router-dom";
 
 const CatalogListItem = ({ car }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -82,19 +83,22 @@ const CatalogListItem = ({ car }) => {
           <Item>{car.id}</Item>
           <Item>{car.accessories[0]}</Item>
         </List>
-
-        <BtnMore type="button" onClick={openModalToggle}>
+        {/* <BtnMore type="button" onClick={openModalToggle}>
           Learn more
-        </BtnMore>
+// ...        </BtnMore> */}
+
+        <Link to={`/car/${car.id}`}>
+          <BtnMore>Learn more</BtnMore>
+        </Link>
       </CardWrap>
-      <CarModal
+      {/* <CarModal
         isOpen={isModalOpen}
         onClose={openModalToggle}
         car={car}
         city={city}
         country={country}
         quality={quality}
-      />
+      /> */}
     </>
   );
 };
