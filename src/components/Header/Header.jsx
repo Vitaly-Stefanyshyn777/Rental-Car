@@ -4,37 +4,41 @@ import {
   ListItem,
   StyledLink,
   SvgHeader,
+  LogoLink,
 } from "./Header.steled";
 import sprite from "../../images/sprite.svg";
 import { RentalLink } from "components/CarModal/CarModal.styled";
-
+import { Link } from "react-router-dom";
 export const Header = () => {
   return (
     <HeaderWrap>
+      <LogoLink to="/">
+        Rental<span>Car</span>
+      </LogoLink>
       <nav>
         <HeaderList>
           <ListItem>
+            <StyledLink to="/favorites">
+              Favorites
+              {/* <SvgHeader width={24} height={24}>
+                <use xlinkHref={`${sprite}#icon-heart`} />
+              </SvgHeader> */}
+            </StyledLink>
+          </ListItem>
+          <ListItem>
             <StyledLink to="/">
               Home
-              <SvgHeader width={24} height={24}>
+              {/* <SvgHeader width={24} height={24}>
                 <use xlinkHref={`${sprite}#icon-home`} />
-              </SvgHeader>
+              </SvgHeader> */}
             </StyledLink>
           </ListItem>
           <ListItem>
             <StyledLink to="/catalog">
               Catalog
-              <SvgHeader width={24} height={24}>
+              {/* <SvgHeader width={24} height={24}>
                 <use xlinkHref={`${sprite}#icon-catalog`} />
-              </SvgHeader>
-            </StyledLink>
-          </ListItem>
-          <ListItem>
-            <StyledLink to="/favorites">
-              Favorites
-              <SvgHeader width={24} height={24}>
-                <use xlinkHref={`${sprite}#icon-heart`} />
-              </SvgHeader>
+              </SvgHeader> */}
             </StyledLink>
           </ListItem>
         </HeaderList>

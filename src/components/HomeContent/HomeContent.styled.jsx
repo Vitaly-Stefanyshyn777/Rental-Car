@@ -1,6 +1,14 @@
+// HomeContent.styled.jsx
 import styled from "styled-components";
 
-export const H1 = styled.h1``;
+export const H1 = styled.h1`
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 16px;
+  text-align: center;
+`;
 
 export const H2 = styled.h2`
   padding: 14px;
@@ -11,23 +19,21 @@ export const H2 = styled.h2`
 
 export const DataImg = styled.div`
   display: flex;
-  gap: 24px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  width: 600px;
-  margin: auto;
-  height: 100%;
-
+  width: 100%;
+  min-height: 700px;
+  padding: 0 16px;
   color: #ffffff;
+
+  text-align: center;
 `;
 
 export const TitleWrap = styled.div`
   margin: 0 auto 24px;
-  width: 1184px;
-  height: 500px;
-  // background-image: url("/public/hero-image.png");
+  width: 100%;
   background-image: url("/hero-image.png");
   background-repeat: no-repeat;
   background-position: center;
