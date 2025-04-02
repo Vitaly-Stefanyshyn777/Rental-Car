@@ -15,14 +15,14 @@ const HomeContent = () => {
     <main>
       <TitleWrap>
         <DataImg
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "1440px",
-            height: "700px",
-          }}
+        // style={{
+        //   backgroundImage: `url(${heroImage})`,
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        //   backgroundRepeat: "no-repeat",
+        //   width: "1200px",
+        //   height: "400px",
+        // }}
         >
           {/* <H1>Car rental in Ukraine №1</H1> */}
           <RentalLink href="tel:+380730000000" type="button">
