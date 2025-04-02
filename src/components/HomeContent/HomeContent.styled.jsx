@@ -27,7 +27,7 @@ export const TitleWrap = styled.div`
   margin: 0 auto 24px;
   width: 1184px;
   height: 500px;
-  background-image: url("../../../public/hero-image.png");
+  background-image: url("/public/hero-image.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

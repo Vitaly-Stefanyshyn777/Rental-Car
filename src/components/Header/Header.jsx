@@ -29,14 +29,14 @@ export const Header = () => {
               </SvgHeader>
             </StyledLink>
           </ListItem>
-          {/* <ListItem>
+          <ListItem>
             <StyledLink to="/favorites">
               Favorites
               <SvgHeader width={24} height={24}>
                 <use xlinkHref={`${sprite}#icon-heart`} />
               </SvgHeader>
             </StyledLink>
-          </ListItem> */}
+          </ListItem>
         </HeaderList>
       </nav>
       <div>
