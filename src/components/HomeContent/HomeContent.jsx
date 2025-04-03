@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  DataImg,
-  H1,
-  H2,
-  Section,
-  SocialList,
-  TitleWrap,
-} from "./HomeContent.styled";
-// import { RentalLink } from "components/CarModal/CarModal.styled";
-import { Link } from "react-router-dom";
+import { DataImg, H1, TitleWrap, RentalLink } from "./HomeContent.styled";
 
 const HomeContent = () => {
   return (
@@ -27,9 +18,7 @@ const HomeContent = () => {
             >
               Reliable and budget-friendly rentals for any journey
             </p>
-            <Link to="/catalog" type="button">
-              View Catalog
-            </Link>
+            <RentalLink to="/catalog">View Catalog</RentalLink>
           </div>
         </DataImg>
       </TitleWrap>
