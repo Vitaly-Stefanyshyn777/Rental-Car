@@ -7,7 +7,8 @@ import {
   SocialList,
   TitleWrap,
 } from "./HomeContent.styled";
-import { RentalLink } from "components/CarModal/CarModal.styled";
+// import { RentalLink } from "components/CarModal/CarModal.styled";
+import { Link } from "react-router-dom";
 
 const HomeContent = () => {
   return (
@@ -26,9 +27,9 @@ const HomeContent = () => {
             >
               Reliable and budget-friendly rentals for any journey
             </p>
-            <RentalLink href="/catalog" type="button">
+            <Link to="/catalog" type="button">
               View Catalog
-            </RentalLink>
+            </Link>
           </div>
         </DataImg>
       </TitleWrap>
