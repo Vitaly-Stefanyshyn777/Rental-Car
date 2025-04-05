@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-/* Контейнер, який утримує два стовпчики: зображення + форма ліворуч і текстова частина праворуч */
 export const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr; /* 2 колонки */
-  gap: 40px;
+  gap: 73px;
 
   @media (max-width: 768px) {
     /* На мобільних: 1 колонка */
@@ -15,29 +14,33 @@ export const Container = styled.div`
   }
 `;
 
-/* Ліва колонка: містить зображення та форму */
 export const LeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-/* Права колонка: містить усі тексти (заголовки, списки) */
 export const RightWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 488px;
+  }
 `;
 
-/* Зображення автомобіля */
 export const CarImage = styled.img`
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 19px;
   object-fit: cover;
   margin-bottom: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 640px;
+  height: 512px;
 `;
 
-/* Заголовок автомобіля (марка, модель, рік) */
 export const CarTitle = styled.h1`
   font-size: 24px;
   margin-bottom: 8px;
@@ -45,40 +48,36 @@ export const CarTitle = styled.h1`
   font-weight: bold;
 `;
 
-/* Підзаголовок: наприклад, локація, пробіг, інше */
-export const CarSubtitle = styled.p`
+export const CarSubtitle = styled.div`
   font-size: 16px;
   color: #777;
   margin-bottom: 12px;
 `;
 
-/* Ціна оренди */
 export const Price = styled.div`
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 600;
   color: #333;
   margin-bottom: 16px;
 `;
 
-/* Опис автомобіля */
 export const Description = styled.p`
-  margin-bottom: 24px;
+  // margin-bottom: 24px;
   line-height: 1.5;
-  color: #444;
+  // color: #444;
   font-size: 16px;
+  margin: 0; // або control через контейнер
 `;
 
-/* Заголовок секції (Rental Conditions, Car Specifications тощо) */
 export const SectionTitle = styled.h2`
-  font-size: 18px;
-  margin: 24px 0 12px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
   color: #333;
-  font-weight: bold;
-  border-bottom: 1px solid #ddd;
   padding-bottom: 6px;
+  margin: 0; // <--- важливо!
 `;
 
-/* Упорядкований список для умов, специфікацій, аксесуарів */
 export const List = styled.ul`
   list-style: none;
   padding-left: 0;
@@ -86,105 +85,277 @@ export const List = styled.ul`
 
   & li {
     position: relative;
-    padding-left: 20px;
+
     margin-bottom: 8px;
     font-size: 15px;
-    color: #555;
-  }
-
-  & li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: #3498db;
+    // color: #555;
   }
 `;
 
-/* Карточка з формою бронювання */
 export const BookingCard = styled.div`
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--gray-light);
+  padding: 32px;
+  width: 640px;
+  height: auto; // прибери фіксовану висоту!
+  // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 32px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  height: 488px;
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 640px;
+  }
 `;
 
-/* Заголовок у формі */
 export const BookingTitle = styled.h3`
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #333;
-  font-weight: bold;
+  margin: 0;
+  font-size: 20px;
+  line-height: 120%;
+  font-weight: 600;
+  color: var(--main, #101828);
+  font-family: var(--font-family, "Manrope", sans-serif);
 `;
 
-/* Підзаголовок у формі */
 export const BookingSubTitle = styled.p`
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-style: italic;
-  color: #777;
-  font-size: 14px;
+  margin: 4px 0 20px;
+  font-size: 16px;
+  line-height: 125%;
+  font-weight: 500;
+  color: var(--gray, #8d929a);
+  font-family: var(--font-family, "Manrope", sans-serif);
 `;
 
-/* Форма бронювання */
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  border-radius: 8px;
 `;
 
-/* Label для полів форми */
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   font-size: 14px;
-  color: #333;
-  font-weight: 500;
+  color: #344054;
+  font-weight: 600;
+  gap: 4px;
 `;
 
 /* Інпут у формі */
-export const Input = styled.input`
-  margin-top: 4px;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+// export const Input = styled.input`
+//   padding: 12px 20px;
+//   font-size: 14px;
+//   border: 1px solid #d0d5dd;
+//   border-radius: 12px;
+//   background-color: #f9fafb;
+//   transition: border-color 0.2s, box-shadow 0.2s;
+//   width: 576px;
+//   height: 48px;
 
-  &:focus {
-    outline: none;
-    border-color: #3498db;
-  }
-`;
+//   &:focus {
+//     border-color: #3470ff;
+//     outline: none;
+//     box-shadow: 0 0 0 4px rgba(52, 112, 255, 0.1);
+//   }
+
+//   &::placeholder {
+//     color: #98a2b3;
+//   }
+// `;
 
 /* Текстове поле (textarea) у формі */
-export const Textarea = styled.textarea`
-  margin-top: 4px;
-  padding: 8px;
+// export const Textarea = styled.textarea`
+//   // padding: 10px 14px;
+//   padding: 12px 20px 56px 20px;
+//   font-size: 14px;
+//   border: 1px solid #d0d5dd;
+//   // border-radius: 12px;
+//   border-radius: 10px;
+//   background-color: #f9fafb;
+//   resize: vertical;
+//   min-height: 80px;
+//   transition: border-color 0.2s, box-shadow 0.2s;
+//   width: 576px;
+//   height: 88px;
+
+//   &:focus {
+//     border-color: #3470ff;
+//     outline: none;
+//     box-shadow: 0 0 0 4px rgba(52, 112, 255, 0.1);
+//   }
+
+//   &::placeholder {
+//     color: #98a2b3;
+//   }
+// `;
+
+export const SubmitButton = styled.button`
+  align-self: center;
+  padding: 12px 51px;
+  background-color: #3470ff;
+  color: #fff;
   font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  width: 156px;
+  height: 44px;
+
+  &:hover {
+    background-color: #0b44cd;
+  }
 
   &:focus {
     outline: none;
-    border-color: #3498db;
+    box-shadow: 0 0 0 4px rgba(11, 68, 205, 0.2);
   }
 `;
 
-/* Кнопка відправлення */
-export const SubmitButton = styled.button`
-  width: 100px;
-  padding: 10px;
-  background-color: #3498db;
-  color: #fff;
-  font-size: 14px;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+export const IconWrapper = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  flex-shrink: 0;
 
-  &:hover {
-    background-color: #2980b9;
+  & svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--main, #101828); // або твоя змінна кольору
   }
+`;
+export const BookingHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // text-align: center;
+  // margin-bottom: 20px;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+`;
+
+export const CarHeaderInfo = styled.div`
+  width: 488px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* якщо хочеш контроль між заголовками */
+  margin-bottom: 68px;
+`;
+
+export const CarInfoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center; // щоб всі блоки були по центру
+  gap: 7rem;
+  // justify-content: space-around;
+  // height: 700px;
+`;
+
+export const RentalSection = styled.div`
+  width: 488px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* відстань між заголовком і списком */
+`;
+
+export const SpecificationsSection = styled.div`
+  width: 488px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* відстань між заголовком і списком */
+`;
+
+export const AccessoriesSection = styled.div`
+  width: 488px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* відстань між заголовком і списком */
+`;
+
+export const ListItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 8px; // як у Figma
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 125%;
+  color: var(--main, #101828);
+`;
+
+export const Input = styled.input`
+  padding: 12px 20px;
+  font-size: 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  background-color: #f9fafb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 576px;
+  height: 48px;
+
+  &:focus {
+    border-color: #3470ff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(52, 112, 255, 0.1);
+  }
+
+  &::placeholder {
+    color: #98a2b3;
+  }
+
+  &.error {
+    border-color: red;
+    box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
+  }
+`;
+
+export const Textarea = styled.textarea`
+  padding: 12px 20px;
+  font-size: 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  background-color: #f9fafb;
+  resize: none; /* <--- важливо: прибирає можливість розтягувати */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 576px;
+  height: 88px; /* фіксована висота */
+
+  &:focus {
+    border-color: #3470ff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(52, 112, 255, 0.1);
+  }
+
+  &::placeholder {
+    color: #98a2b3;
+  }
+
+  &.error {
+    border-color: red;
+    box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
+  }
+`;
+
+export const CarId = styled.span`
+  margin-left: 12px;
+  padding: 2px 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 125%;
+  border-radius: 6px;
+  color: #344054;
+  font-weight: 500;
 `;

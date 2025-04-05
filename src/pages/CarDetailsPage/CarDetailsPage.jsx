@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCars } from "@redux/selectors";
@@ -22,22 +22,42 @@ import {
   Input,
   Textarea,
   SubmitButton,
+  IconWrapper,
+  BookingHeader,
+  ButtonWrapper,
+  CarHeaderInfo,
+  CarInfoSection,
+  RentalSection,
+  SpecificationsSection,
+  AccessoriesSection,
+  ListItem,
+  CarId,
 } from "./CarDetailsStyles";
+
+import {
+  CheckIcon,
+  EngineIcon,
+  FuelIcon,
+  LocationIcon,
+  TypeIcon,
+  YearIcon,
+} from "../../components/Icon/CheckIcon";
+
+import DateInput from "./DateInput";
 
 const CarDetailsPage = () => {
   const { id } = useParams();
   const cars = useSelector(getCars);
+  const [bookingDate, setBookingDate] = useState(null);
+  const [hasError, setHasError] = useState(false);
 
-  // Знаходимо автомобіль за ID
   const car = cars.find((item) => String(item.id) === String(id));
   if (!car) return <p>Car not found</p>;
 
-  // Для прикладу: розбиваємо адресу на місто і країну
   const parts = car.address ? car.address.split(", ") : [];
   const city = parts[1] || "Unknown city";
   const country = parts[2] || "Unknown country";
 
-  // Приклади даних (якщо у вас вони вже є в car, підставляйте їх)
   const exampleMileage = "5 858 km";
   const exampleFuel = "10.5";
   const exampleEngineSize = "3.6L V6";
@@ -46,12 +66,24 @@ const CarDetailsPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      setHasError(true);
+      return;
+    }
+
+    if (!bookingDate) {
+      alert("Please select a booking date");
+      setHasError(true);
+      return;
+    }
+    setHasError(false);
     alert("Your booking request has been sent!");
   };
 
   return (
     <Container>
-      {/* Ліва колонка: зображення + форма */}
       <LeftWrapper>
         <CarImage
           src={
@@ -61,74 +93,165 @@ const CarDetailsPage = () => {
           alt={`${car.make} ${car.model}`}
         />
 
-        {/* Блок із формою бронювання */}
         <BookingCard>
-          <BookingTitle>Book your car now</BookingTitle>
-          <BookingSubTitle>
-            Stay connected! We are always ready to help you.
-          </BookingSubTitle>
-
-          <Form onSubmit={handleSubmit}>
+          <BookingHeader>
+            <BookingTitle>Book your car now</BookingTitle>
+            <BookingSubTitle>
+              Stay connected! We are always ready to help you.
+            </BookingSubTitle>
+          </BookingHeader>
+          <Form id="booking-form" onSubmit={handleSubmit}>
             <Label>
-              Name*:
-              <Input type="text" name="name" required />
+              <Input
+                type="text"
+                name="name"
+                required
+                placeholder="Name*"
+                className={hasError ? "invalid" : ""}
+              />
             </Label>
-
             <Label>
-              Email*:
-              <Input type="email" name="email" required />
+              <Input
+                type="email"
+                name="email"
+                required
+                placeholder="Email*"
+                className={hasError ? "invalid" : ""}
+              />
             </Label>
-
             <Label>
-              Booking date:
-              <Input type="date" name="bookingDate" />
+              <DateInput value={bookingDate} onChange={setBookingDate} />
             </Label>
-
             <Label>
-              Comment:
-              <Textarea name="comment" rows="3" />
+              <Textarea
+                name="comment"
+                rows="3"
+                required
+                placeholder="Comment*"
+                className={hasError ? "invalid" : ""}
+              />
             </Label>
-
-            <SubmitButton type="submit">Send</SubmitButton>
           </Form>
+          <ButtonWrapper>
+            <SubmitButton type="submit" form="booking-form">
+              Send
+            </SubmitButton>
+          </ButtonWrapper>
         </BookingCard>
       </LeftWrapper>
 
-      {/* Права колонка: детальна інформація */}
       <RightWrapper>
-        <CarTitle>
-          {car.make} {car.model}, {car.year}
-        </CarTitle>
-        <CarSubtitle>
-          {city}, {country} | Mileage: {exampleMileage}
-        </CarSubtitle>
-        <Price>{car.rentalPrice || "$40"}</Price>
-        <Description>{exampleDescription}</Description>
-
-        <SectionTitle>Rental Conditions:</SectionTitle>
-        <List>
-          <li>Minimum age: 25</li>
-          <li>Security deposit required</li>
-          <li>Valid driver's license</li>
-        </List>
-
-        <SectionTitle>Car Specifications:</SectionTitle>
-        <List>
-          <li>Year: {car.year}</li>
-          <li>Type: {car.type}</li>
-          <li>Fuel Consumption: {exampleFuel} (л/100км)</li>
-          <li>Engine Size: {exampleEngineSize}</li>
-        </List>
-
-        <SectionTitle>Accessories and functionalities:</SectionTitle>
-        <List>
-          <li>Leather seats</li>
-          <li>Panoramic sunroof</li>
-          <li>Remote start</li>
-          <li>Blind-spot monitoring</li>
-          <li>Power liftgate</li>
-          <li>Premium audio system</li>
-        </List>
+        <CarHeaderInfo>
+          <CarTitle>
+            {car.make} {car.model}, {car.year}
+            <CarId>Id: {car.id}</CarId>
+          </CarTitle>
+          <CarSubtitle>
+            <ListItem>
+              <IconWrapper>
+                <LocationIcon />
+              </IconWrapper>
+              {city}, {country} | Mileage: {exampleMileage}
+            </ListItem>
+          </CarSubtitle>
+          <Price>{car.rentalPrice || "$40"}</Price>
+          <Description>{exampleDescription}</Description>
+        </CarHeaderInfo>
+        <CarInfoSection>
+          <RentalSection>
+            <SectionTitle>Rental Conditions:</SectionTitle>
+            <List>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Leather seats
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Security deposit required
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Valid driver's license
+              </ListItem>
+            </List>
+          </RentalSection>
+          <SpecificationsSection>
+            <SectionTitle>Car Specifications:</SectionTitle>
+            <List>
+              <ListItem>
+                <IconWrapper>
+                  <YearIcon />
+                </IconWrapper>
+                Year: {car.year}
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <TypeIcon />
+                </IconWrapper>
+                Type: {car.type}
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <FuelIcon />
+                </IconWrapper>
+                Fuel Consumption: {exampleFuel} (л/100км)
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <EngineIcon />
+                </IconWrapper>
+                Engine Size: {exampleEngineSize}
+              </ListItem>
+            </List>
+          </SpecificationsSection>
+          <AccessoriesSection>
+            <SectionTitle>Accessories and functionalities:</SectionTitle>
+            <List>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Leather seats
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Panoramic sunroof
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Remote start
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Blind-spot monitoring
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Power liftgate
+              </ListItem>
+              <ListItem>
+                <IconWrapper>
+                  <CheckIcon />
+                </IconWrapper>
+                Premium audio system
+              </ListItem>
+            </List>
+          </AccessoriesSection>
+        </CarInfoSection>
       </RightWrapper>
     </Container>
   );
