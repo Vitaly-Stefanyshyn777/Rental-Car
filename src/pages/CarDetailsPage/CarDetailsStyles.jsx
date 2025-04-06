@@ -57,7 +57,7 @@ export const CarSubtitle = styled.div`
 export const Price = styled.div`
   font-size: 24px;
   font-weight: 600;
-  color: #333;
+  color: #3470ff;
   margin-bottom: 16px;
 `;
 
