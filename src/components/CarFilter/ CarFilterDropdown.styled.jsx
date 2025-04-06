@@ -14,12 +14,13 @@ export const Label = styled.label`
   display: block;
 `;
 
-export const DropdownHeader = styled.div`
+export const DropdownHeader = styled.button`
   width: 100%;
   padding: 12px 16px;
   height: 44px;
   background: #f9fafb;
   border-radius: 12px;
+  border: 1px solid #d0d5dd;
   cursor: pointer;
   font-size: 16px;
   line-height: 128%;
@@ -27,16 +28,19 @@ export const DropdownHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: border 0.2s ease;
 `;
 
-export const ArrowIcon = styled.div`
+export const ArrowIcon = styled.svg.attrs(() => ({
+  viewBox: "0 0 10 6",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg",
+}))`
   width: 10px;
   height: 6px;
-  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23344054' stroke-width='1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  transform: ${({ open }) => (open ? "rotate(180deg)" : "rotate(0deg)")};
+  margin-left: 8px;
   transition: transform 0.3s ease;
+  transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0deg)")};
 `;
 
 export const DropdownList = styled.ul`
@@ -51,6 +55,22 @@ export const DropdownList = styled.ul`
   z-index: 10;
   padding: 12px 0;
   overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 `;
 
 export const DropdownItem = styled.li`
@@ -58,6 +78,9 @@ export const DropdownItem = styled.li`
   font-size: 16px;
   cursor: pointer;
   color: #121417;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+
   &:hover {
     background-color: #f2f2f2;
   }

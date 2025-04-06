@@ -12,7 +12,7 @@ const SelectButton = styled.button`
   font-weight: 500;
   line-height: 125%;
   color: rgba(18, 20, 23, 0.9);
-  width: 100%;
+  width: 204px;
   height: 44px;
   padding: 12px 16px;
   border-radius: 12px;
@@ -22,9 +22,18 @@ const SelectButton = styled.button`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23344054' stroke-width='1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
+`;
+
+const ArrowIcon = styled.svg.attrs(() => ({
+  viewBox: "0 0 10 6",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg",
+}))`
+  width: 10px;
+  height: 6px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+  transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0deg)")};
 `;
 
 const OptionsList = styled.ul`
@@ -68,7 +77,7 @@ const OptionItem = styled.li`
   color: var(--gray, #8a8a89);
   padding: 12px 16px;
   cursor: pointer;
-  background: ${({ isSelected }) => (isSelected ? "#f0f0f0" : "transparent")};
+  background: ${({ $isSelected }) => ($isSelected ? "#f0f0f0" : "transparent")};
 
   &:hover {
     background: #f0f0f0;
@@ -116,13 +125,22 @@ const CustomSelect = ({
     <SelectWrapper ref={wrapperRef}>
       <SelectButton onClick={handleToggleOpen}>
         <span>{selectedOption ? selectedOption.label : placeholder}</span>
+        <ArrowIcon $isOpen={isOpen}>
+          <path
+            d="M1 1L5 5L9 1"
+            stroke="#344054"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </ArrowIcon>
       </SelectButton>
       {isOpen && (
         <OptionsList>
           {options.map((option) => (
             <OptionItem
               key={option.value}
-              isSelected={option.value === value}
+              $isSelected={option.value === value}
               onClick={() => handleOptionClick(option)}
             >
               {option.label}

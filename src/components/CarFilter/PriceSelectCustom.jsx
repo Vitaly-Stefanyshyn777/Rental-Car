@@ -4,6 +4,7 @@ import {
   SelectButton,
   OptionsList,
   OptionItem,
+  ArrowIcon,
 } from "./PriceSelectCustom.styled";
 
 const PriceSelectCustom = ({
@@ -47,13 +48,22 @@ const PriceSelectCustom = ({
     <SelectWrapper ref={wrapperRef}>
       <SelectButton onClick={handleToggleOpen}>
         <span>{selectedOption ? `${selectedOption.label}` : placeholder}</span>
+        <ArrowIcon $isOpen={isOpen}>
+          <path
+            d="M1 1L5 5L9 1"
+            stroke="#344054"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </ArrowIcon>
       </SelectButton>
       {isOpen && (
         <OptionsList>
           {options.map((option) => (
             <OptionItem
               key={option.value}
-              isSelected={option.value === value}
+              $isSelected={option.value === value}
               onClick={() => handleOptionClick(option)}
             >
               ${option.label}
