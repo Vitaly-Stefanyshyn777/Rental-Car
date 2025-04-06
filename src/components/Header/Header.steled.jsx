@@ -1,3 +1,14 @@
+import styled from "styled-components";
+import { Link, NavLink } from "react-router-dom";
+
+export const HeaderWrap = styled.header`
+  width: 100%;
+  height: 68px;
+  background-color: #f7f7fb;
+  display: flex;
+  align-items: center;
+`;
+
 export const HeaderInner = styled.div`
   box-sizing: border-box;
   max-width: 1440px;
