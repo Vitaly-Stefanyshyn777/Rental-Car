@@ -9,13 +9,14 @@ import {
   InputMillageWrapper,
   InputText,
   Label,
-  PriceSelect,
   SelectCarWrapper,
   SelectPriceWrapper,
-  StyledSelect,
+  PriceSelect,
 } from "./CarFilter.styled";
 import { useDispatch } from "react-redux";
 import { filterCars, resetCars } from "../../redux/carsThunks";
+import CustomSelect from "./CustomSelect";
+import PriceSelectCustom from "./PriceSelectCustom";
 
 const CarFilter = ({ resetPage }) => {
   const dispatch = useDispatch();
@@ -24,12 +25,15 @@ const CarFilter = ({ resetPage }) => {
   const [fromMillage, setFromMillage] = useState("");
   const [toMillage, setToMillage] = useState("");
 
-  const formatNumber = (num) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
+  const makeOptions = [...makes.map((make) => ({ value: make, label: make }))];
 
-  const handleSelectChange = (event) => {
-    setSelectedMake(event.target.value);
+  const priceOptions = [
+    ...prices.map((price) => ({ value: price, label: price })),
+  ];
+
+  const formatNumberWithSpaces = (value) => {
+    if (!value) return "";
+    return value.replace(/\s+/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   };
 
   const handleSelectPriceChange = (event) => {
@@ -37,23 +41,37 @@ const CarFilter = ({ resetPage }) => {
   };
 
   const handleFromMillageChange = (event) => {
-    setFromMillage(formatNumber(event.target.value.replace(/\D/g, "")));
+    const cleanValue = event.target.value.replace(/\D/g, "");
+    const formattedValue = formatNumberWithSpaces(cleanValue);
+    setFromMillage(formattedValue);
   };
 
   const handleToMillageChange = (event) => {
-    setToMillage(formatNumber(event.target.value.replace(/\D/g, "")));
+    const cleanValue = event.target.value.replace(/\D/g, "");
+    const formattedValue = formatNumberWithSpaces(cleanValue);
+    setToMillage(formattedValue);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const minMileage = fromMillage
+      ? parseInt(fromMillage.replace(/\s/g, ""), 10)
+      : undefined;
+    const maxMileage = toMillage
+      ? parseInt(toMillage.replace(/\s/g, ""), 10)
+      : undefined;
+
     const options = {
-      make: selectedMake,
-      rentalPrice: selectedPrice,
-      mileageFrom: fromMillage,
-      mileageTo: toMillage,
+      brand: selectedMake || "",
+      rentalPrice: selectedPrice || "",
+      minMileage,
+      maxMileage,
+      page: 1,
+      limit: 12,
     };
 
+    resetPage();
     dispatch(filterCars(options));
   };
 
@@ -63,16 +81,14 @@ const CarFilter = ({ resetPage }) => {
     setFromMillage("");
     setToMillage("");
     resetPage();
-
     const options = {
-      make: "",
+      brand: "",
       rentalPrice: "",
-      mileageFrom: "",
-      mileageTo: "",
+      minMileage: "",
+      maxMileage: "",
+      limit: 12,
       page: 1,
-      pageSize: 12,
     };
-
     dispatch(resetCars(options));
   };
 
@@ -80,57 +96,43 @@ const CarFilter = ({ resetPage }) => {
     <CarForm onSubmit={handleSubmit}>
       <SelectCarWrapper>
         <Label htmlFor="makeSelect">Car brand</Label>
-        <StyledSelect
-          id="makeSelect"
+        <CustomSelect
+          options={makeOptions}
           value={selectedMake}
-          onChange={handleSelectChange}
-        >
-          <option value="">All</option>
-          {makes.map((make, index) => (
-            <option key={index} value={make}>
-              {make}
-            </option>
-          ))}
-        </StyledSelect>
+          onChange={(option) => setSelectedMake(option.value)}
+          placeholder="Choose a brand"
+        />
       </SelectCarWrapper>
 
       <SelectPriceWrapper>
-        <Label htmlFor="priceSelect">Price To $/ 1 hour</Label>
-        <PriceSelect
-          id="priceSelect"
+        <Label htmlFor="priceSelect">Price / 1 hour</Label>
+        <PriceSelectCustom
+          options={priceOptions}
           value={selectedPrice}
-          onChange={handleSelectPriceChange}
-        >
-          <option value="">All</option>
-          {prices.map((price, index) => (
-            <option key={index} value={price}>
-              {price}
-            </option>
-          ))}
-        </PriceSelect>
+          onChange={(option) => setSelectedPrice(option.value)}
+          placeholder="Choose a price"
+        />
       </SelectPriceWrapper>
 
       <InputMillageWrapper>
-        <Label htmlFor="millage">Сar mileage / km</Label>
+        <Label htmlFor="millage">Car mileage / km</Label>
         <DivMillage>
           <InputMillage
-            style={{
-              borderRadius: "14px 0px 0px 14px",
-              borderRight: "1px solid rgba(138, 138, 137, 0.20)",
-              paddingLeft: "68px",
-            }}
+            data-from="true"
+            id="millage"
             type="text"
             value={fromMillage}
             onChange={handleFromMillageChange}
           />
-          <InputText style={{ left: "24px" }}>From</InputText>
+          <InputText data-from="true">From</InputText>
+
           <InputMillage
-            style={{ borderRadius: "0 14px 14px 0", paddingLeft: "48px" }}
+            data-to="true"
             type="text"
             value={toMillage}
             onChange={handleToMillageChange}
           />
-          <InputText style={{ right: "120px" }}>To</InputText>
+          <InputText data-to="true">To</InputText>
         </DivMillage>
       </InputMillageWrapper>
 

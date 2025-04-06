@@ -35,7 +35,7 @@ export const CarImage = styled.img`
   height: auto;
   border-radius: 19px;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 640px;
   height: 512px;
@@ -142,54 +142,6 @@ export const Label = styled.label`
   gap: 4px;
 `;
 
-/* Інпут у формі */
-// export const Input = styled.input`
-//   padding: 12px 20px;
-//   font-size: 14px;
-//   border: 1px solid #d0d5dd;
-//   border-radius: 12px;
-//   background-color: #f9fafb;
-//   transition: border-color 0.2s, box-shadow 0.2s;
-//   width: 576px;
-//   height: 48px;
-
-//   &:focus {
-//     border-color: #3470ff;
-//     outline: none;
-//     box-shadow: 0 0 0 4px rgba(52, 112, 255, 0.1);
-//   }
-
-//   &::placeholder {
-//     color: #98a2b3;
-//   }
-// `;
-
-/* Текстове поле (textarea) у формі */
-// export const Textarea = styled.textarea`
-//   // padding: 10px 14px;
-//   padding: 12px 20px 56px 20px;
-//   font-size: 14px;
-//   border: 1px solid #d0d5dd;
-//   // border-radius: 12px;
-//   border-radius: 10px;
-//   background-color: #f9fafb;
-//   resize: vertical;
-//   min-height: 80px;
-//   transition: border-color 0.2s, box-shadow 0.2s;
-//   width: 576px;
-//   height: 88px;
-
-//   &:focus {
-//     border-color: #3470ff;
-//     outline: none;
-//     box-shadow: 0 0 0 4px rgba(52, 112, 255, 0.1);
-//   }
-
-//   &::placeholder {
-//     color: #98a2b3;
-//   }
-// `;
-
 export const SubmitButton = styled.button`
   align-self: center;
   padding: 12px 51px;
@@ -255,7 +207,7 @@ export const CarInfoSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center; // щоб всі блоки були по центру
-  gap: 7rem;
+  gap: 8rem;
   // justify-content: space-around;
   // height: 700px;
 `;
@@ -351,11 +303,9 @@ export const Textarea = styled.textarea`
 
 export const CarId = styled.span`
   margin-left: 12px;
-  padding: 2px 8px;
   font-size: 16px;
-  font-weight: 400;
-  line-height: 125%;
-  border-radius: 6px;
-  color: #344054;
   font-weight: 500;
+  line-height: 125%;
+  color: #344054;
+  font-family: var(--font-family, "Manrope", sans-serif);
 `;

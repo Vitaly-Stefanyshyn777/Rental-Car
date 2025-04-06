@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 export const HaveNotFav = styled.div`
   display: flex;
   justify-content: center;
@@ -13,17 +13,35 @@ export const HaveNotFav = styled.div`
   line-height: 20px;
 `;
 export const Btn = styled.button`
-  color: #ffffff;
-  /* font-family: Manrope; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 156px;
+  height: 44px;
+  padding: 12px 51px;
+
+  background: #ffffff;
+  border: 1px solid #0b44cd;
+  border-radius: 12px;
+
+  color: #101828;
+  font-family: "ManropeSemiBold", sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
+  text-align: center;
+  white-space: nowrap; /* ⬅️ оце не дасть тексту переноситись */
 
-  margin: 0 auto;
-  padding: 14px 44px;
-  width: 160px;
-  height: 48px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
-  border-radius: 12px;
-  background: #3470ff;
+  &:hover {
+    background-color: #0b44cd;
+    color: #ffffff;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 `;

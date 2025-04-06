@@ -144,7 +144,7 @@ const CarDetailsPage = () => {
         <CarHeaderInfo>
           <CarTitle>
             {car.make} {car.model}, {car.year}
-            <CarId>Id: {car.id}</CarId>
+            <CarId>Id: {car.id.slice(0, 4)}</CarId>
           </CarTitle>
           <CarSubtitle>
             <ListItem>

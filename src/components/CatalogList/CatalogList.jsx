@@ -1,10 +1,14 @@
-import CatalogListItem from "components/CatalogListItem/CatalogListItem";
 import React from "react";
 import { useSelector } from "react-redux";
-import { HaveNotCars, ListOfCars } from "./CatalogList.styled";
-import { Btn } from "components/FavoriteCard/FavoritesCard.styled";
+import {
+  ListOfCars,
+  HaveNotCars,
+  LoadMoreBtnWrapper,
+  LoadMoreText,
+} from "./CatalogList.styled";
 import { CenteredColorRing } from "pages/CatalogPage/CatalogPage.styled";
 import { ColorRing } from "react-loader-spinner";
+import CatalogListItem from "components/CatalogListItem/CatalogListItem";
 import {
   getCars,
   getHideButton,
@@ -19,37 +23,37 @@ const CatalogList = ({ incrementPage, page }) => {
   const isHideBtn = useSelector(getHideButton);
   const totalCount = useSelector(getTotalCount);
   const cars = useSelector(getCars);
-
   const maxPage = Math.ceil(totalCount / PAGE_SIZE);
 
   const handleLoadMore = () => {
     incrementPage();
   };
+
   return (
     <ListOfCars>
       {cars.length > 0 ? (
-        cars.map((car) => {
-          return <CatalogListItem key={car.id} car={car} />;
-        })
+        cars.map((car) => <CatalogListItem key={car.id} car={car} />)
       ) : (
         <HaveNotCars>Sorry, we don't have any cars like this!</HaveNotCars>
       )}
+
       {!isHideBtn && page < maxPage && (
-        <Btn type="button" onClick={handleLoadMore}>
-          Load More
-        </Btn>
+        <div
+          style={{
+            gridColumn: "1 / -1",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <LoadMoreBtnWrapper onClick={handleLoadMore}>
+            <LoadMoreText>Load more</LoadMoreText>
+          </LoadMoreBtnWrapper>
+        </div>
       )}
+
       {isLoading && (
         <CenteredColorRing>
-          <ColorRing
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="color-ring-loading"
-            wrapperStyle={{}}
-            wrapperClass="color-ring-wrapper"
-            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
-          />
+          <ColorRing />
         </CenteredColorRing>
       )}
     </ListOfCars>

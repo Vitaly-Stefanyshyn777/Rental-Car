@@ -1,101 +1,113 @@
-import styled, { css } from 'styled-components';
-export const CardWrap = styled.div`
-  width: 274px;
-  position: relative;
-`;
+import styled, { css } from "styled-components";
 
-export const Img = styled.img``;
+export const CardWrap = styled.div`
+  position: relative;
+  width: 274px;
+  border-radius: 14px;
+  background-color: #ffffff;
+  overflow: hidden;
+`;
 
 export const ImgWrapper = styled.div`
   width: 274px;
   height: 268px;
-  overflow: hidden;
-  background-color: gray;
+  background-color: #ccc;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   border-radius: 14px;
-  margin-bottom: 14px;
+`;
+
+export const SvgHeart = styled.svg`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.8);
+  transition: fill 0.3s ease, stroke 0.3s ease;
+
+  ${({ $isFavorite }) =>
+    $isFavorite &&
+    css`
+      fill: #3470ff;
+      stroke: none;
+    `}
 `;
 
 export const FlexWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
-`;
-
-export const List = styled.ul`
-  font-family: 'ManropeRegular';
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-  gap: 4px 6px;
-  max-width: 270px;
-  max-height: 40px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-export const Item = styled.li`
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(18, 20, 23, 0.5);
-
-  &:not(:first-child)::before {
-    content: '|';
-    margin-right: 6px;
-  }
-  &:first-child {
-    margin-left: 0;
-  }
-`;
-
-export const BtnMore = styled.button`
-  display: flex;
-  width: 274px;
-  height: 44px;
-  padding: 12px 99px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background: #3470ff;
-  color: #ffffff;
-  font-family: 'ManropeSemiBold';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
+  align-items: flex-start;
+  margin: 14px 0 8px 0;
+  padding: 0 4px;
 `;
 
 export const Subtitle = styled.p`
-  color: #121417;
-
-  font-family: 'ManropeMedium';
+  font-family: "ManropeMedium", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
   line-height: 24px;
-  overflow: hidden;
-  height: 24px;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
+  color: #121417;
+  margin: 0;
 `;
 
 export const Year = styled.span`
   color: #3470ff;
 `;
 
-export const SvgHeart = styled.svg`
-  stroke: rgba(255, 255, 255, 0.8);
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  cursor: pointer;
+export const List = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  margin: 0 0 4px 0;
+  padding: 0 4px;
+  list-style: none;
+  font-family: "ManropeRegular", sans-serif;
+`;
 
-  ${({ isFavorite }) =>
-    isFavorite &&
-    css`
-      fill: blue;
-    `}
+export const Item = styled.li`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+  color: #8d929a;
+  position: relative;
+
+  &:not(:first-child)::before {
+    content: "|";
+    margin-right: 6px;
+    color: rgba(18, 20, 23, 0.3);
+  }
+`;
+
+export const BtnMore = styled.button`
+  display: block;
+  width: 276px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: #3470ff;
+  color: #ffffff;
+  font-family: "ManropeSemiBold", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 16px;
+
+  &:hover,
+  &:focus {
+    background-color: #2d62e0;
+  }
+`;
+
+export const TextInfoBlock = styled.div`
+  padding: 14px 4px 0; /* верх + боки, знизу прибрано */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px; /* ⬅️ відстань до кнопки */
 `;

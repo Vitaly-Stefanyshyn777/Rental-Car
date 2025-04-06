@@ -1,12 +1,15 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getFilterCars, getCars } from '../api/cars';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getFilterCars, getCars } from "../api/cars";
 
 export const fetchCars = createAsyncThunk(
-  'cars/fetchCars',
+  "cars/fetchCars",
   async (data, thunkAPI) => {
     try {
       const response = await getCars(data);
-      return response;
+      return {
+        cars: response?.cars || [],
+        totalCount: response?.totalCount || 0,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -14,11 +17,14 @@ export const fetchCars = createAsyncThunk(
 );
 
 export const filterCars = createAsyncThunk(
-  'cars/filterCars',
+  "cars/filterCars",
   async (data, thunkAPI) => {
     try {
       const response = await getFilterCars(data);
-      return response;
+      return {
+        cars: response?.cars || [],
+        totalCount: response?.totalCount || 0,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -26,11 +32,14 @@ export const filterCars = createAsyncThunk(
 );
 
 export const resetCars = createAsyncThunk(
-  'cars/resetCars',
+  "cars/resetCars",
   async (data, thunkAPI) => {
     try {
       const response = await getCars(data);
-      return response;
+      return {
+        cars: response?.cars || [],
+        totalCount: response?.totalCount || 0,
+      };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
