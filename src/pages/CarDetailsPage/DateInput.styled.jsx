@@ -45,7 +45,7 @@ export const StyledDateInput = styled.div`
 
   .react-datepicker__header {
     background-color: transparent;
-    border-bottom: 1px solid #e4e7ec;
+    border-bottom: 1px solid #0b44cd;
     padding: 12px 0 8px;
   }
 
@@ -126,7 +126,7 @@ export const StyledDateInput = styled.div`
   }
 
   .react-datepicker__navigation-icon::before {
-    border-color: var(--main, #344054);
+    border-color: #3470ff;
     border-width: 2px 2px 0 0;
     width: 8px;
     height: 8px;
