@@ -11,7 +11,7 @@ export const SelectButton = styled.button`
   font-weight: 500;
   line-height: 125%;
   color: rgba(18, 20, 23, 0.9);
-  width: 204px;
+  width: 196px;
   height: 44px;
   padding: 12px 16px;
   border-radius: 12px;

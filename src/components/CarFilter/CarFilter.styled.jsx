@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CarForm = styled.form`
   display: flex;
   align-items: flex-end;
-  gap: 18px;
+  gap: 16px;
   width: 924px; /* Згідно з макетом */
   height: 68px; /* Згідно з макетом */
   margin: 0 auto 50px;
