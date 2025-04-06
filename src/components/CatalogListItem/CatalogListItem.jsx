@@ -13,6 +13,7 @@ import {
   Year,
 } from "./CatalogListItem.styled";
 import sprite from "../../images/sprite.svg";
+import { LovedarActiveIcon, LovedarIcon } from "../Icon/CheckIcon";
 
 const CatalogListItem = ({ car }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -60,7 +61,7 @@ const CatalogListItem = ({ car }) => {
         }}
       />
       <SvgHeart onClick={toggleFavorite} $isFavorite={isFavorite}>
-        <use xlinkHref={`${sprite}#icon-heart`} />
+        {isFavorite ? <LovedarActiveIcon /> : <LovedarIcon />}
       </SvgHeart>
       <TextInfoBlock>
         <FlexWrap>
@@ -82,7 +83,7 @@ const CatalogListItem = ({ car }) => {
         </List>
       </TextInfoBlock>
 
-      <Link to={`/car/${car.id}`}>
+      <Link to={`/catalog/${car.id}`}>
         <BtnMore>Read more</BtnMore>
       </Link>
     </CardWrap>

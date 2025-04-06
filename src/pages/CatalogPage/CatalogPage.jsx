@@ -1,24 +1,24 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCars, resetCars } from '../../redux/carsThunks';
-import CatalogList from 'components/CatalogList/CatalogList';
-import CarFilter from 'components/CarFilter/CarFilter';
-import { ColorRing } from 'react-loader-spinner';
-import { CenteredColorRing } from './CatalogPage.styled';
-import { getIsLoading } from '../../redux/selectors';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCars, resetCars } from "../../redux/carsThunks";
+import CatalogList from "components/CatalogList/CatalogList";
+import CarFilter from "components/CarFilter/CarFilter";
+import { ColorRing } from "react-loader-spinner";
+import { CenteredColorRing } from "./CatalogPage.styled";
+import { getIsLoading } from "../../redux/selectors";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
-
   const isLoading = useSelector(getIsLoading);
+
   const [page, setPage] = useState(1);
   const [filterOptions, setFilterOptions] = useState({
-    make: '',
-    rentalPrice: '',
-    mileageFrom: '',
-    mileageTo: '',
+    brand: "",
+    rentalPrice: "",
+    minMileage: "",
+    maxMileage: "",
     page,
-    pageSize: 12,
+    limit: 12,
   });
 
   const resetPage = () => {
@@ -26,9 +26,9 @@ const CatalogPage = () => {
   };
 
   const incrementPage = () => {
-    setPage(prevPage => {
+    setPage((prevPage) => {
       const nextPage = prevPage + 1;
-      setFilterOptions(prevOptions => ({
+      setFilterOptions((prevOptions) => ({
         ...prevOptions,
         page: nextPage,
       }));
@@ -38,7 +38,6 @@ const CatalogPage = () => {
 
   useEffect(() => {
     dispatch(resetCars(filterOptions));
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -56,7 +55,7 @@ const CatalogPage = () => {
             ariaLabel="color-ring-loading"
             wrapperStyle={{}}
             wrapperClass="color-ring-wrapper"
-            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
           />
         </CenteredColorRing>
       )}

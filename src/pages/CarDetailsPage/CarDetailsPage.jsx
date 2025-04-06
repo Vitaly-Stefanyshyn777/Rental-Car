@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCars } from "@redux/selectors";
 
 import {
@@ -44,12 +44,24 @@ import {
 } from "../../components/Icon/CheckIcon";
 
 import DateInput from "./DateInput";
+import { fetchCars } from "../../redux/carsThunks";
 
 const CarDetailsPage = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const cars = useSelector(getCars);
   const [bookingDate, setBookingDate] = useState(null);
   const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    if (!cars || cars.length === 0) {
+      dispatch(fetchCars());
+    }
+  }, [cars, dispatch]);
+
+  if (!cars || cars.length === 0) {
+    return <p>Loading...</p>;
+  }
 
   const car = cars.find((item) => String(item.id) === String(id));
   if (!car) return <p>Car not found</p>;

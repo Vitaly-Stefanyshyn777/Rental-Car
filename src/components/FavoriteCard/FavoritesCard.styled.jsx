@@ -1,50 +1,50 @@
 import styled from "styled-components";
-export const HaveNotFav = styled.div`
+
+export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  grid-column: 1 / -1; /* ⬅️ розтягує на всю ширину grid */
-
-  margin: 0 auto;
-  width: 100%;
-  padding: 40px;
-
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.4;
-  text-align: center;
+  padding-top: 60px; /* <-- додаємо відступ зверху */
 `;
+
+export const List = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 48px 32px;
+  justify-items: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;
+
 export const Btn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 156px;
-  height: 44px;
-  padding: 12px 51px;
-
-  background: #ffffff;
-  border: 1px solid #0b44cd;
-  border-radius: 12px;
-
-  color: #101828;
-  font-family: "ManropeSemiBold", sans-serif;
-  font-size: 14px;
+  margin-top: 40px;
+  padding: 12px 24px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 20px;
-  text-align: center;
-  white-space: nowrap; /* ⬅️ оце не дасть тексту переноситись */
-
+  background-color: #3470ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #0b44cd;
-    color: #ffffff;
   }
+`;
 
-  &:active {
-    transform: scale(0.98);
-  }
+export const HaveNotFav = styled.p`
+  font-size: 24px;
+  color: #8e8e93;
+  margin-top: 60px;
+  text-align: center;
 `;

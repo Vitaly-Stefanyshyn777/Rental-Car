@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FavoriteItem from "components/FavoriteItem/FavoriteItem";
-import { ListOfCars } from "components/CatalogList/CatalogList.styled";
-import { Btn, HaveNotFav } from "./FavoritesCard.styled";
+import { List, Btn, HaveNotFav, Wrapper } from "./FavoritesCard.styled";
 
 const FavoriteCard = () => {
   const [favorites, setFavorites] = useState([]);
@@ -37,24 +36,28 @@ const FavoriteCard = () => {
   const visibleFavorites = favorites.slice(0, page * pageSize);
 
   return (
-    <ListOfCars>
+    <Wrapper>
       {visibleFavorites.length > 0 ? (
-        visibleFavorites.map((car) => (
-          <FavoriteItem
-            car={car}
-            toggleFavorite={toggleFavorite}
-            key={String(car.id)}
-          />
-        ))
+        <>
+          <List>
+            {visibleFavorites.map((car) => (
+              <FavoriteItem
+                car={car}
+                toggleFavorite={toggleFavorite}
+                key={String(car.id)}
+              />
+            ))}
+          </List>
+          {favorites.length > visibleFavorites.length && (
+            <Btn type="button" onClick={handleLoadMore}>
+              Load more
+            </Btn>
+          )}
+        </>
       ) : (
         <HaveNotFav>You don't have any favorite cars yet!</HaveNotFav>
       )}
-      {favorites.length > visibleFavorites.length && (
-        <Btn type="button" onClick={handleLoadMore}>
-          Load more
-        </Btn>
-      )}
-    </ListOfCars>
+    </Wrapper>
   );
 };
 

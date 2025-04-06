@@ -239,11 +239,23 @@ export const AccessoriesSection = styled.div`
 export const ListItem = styled.li`
   display: flex;
   align-items: center;
-  gap: 8px; // як у Figma
+  gap: 8px; /* як у Figma */
   font-size: 16px;
   font-weight: 500;
   line-height: 125%;
   color: var(--main, #101828);
+
+  background-color: ${({ $isSelected }) =>
+    $isSelected ? "#e5efff" : "transparent"};
+  border-radius: ${({ $isSelected }) => ($isSelected ? "8px" : "0")};
+  padding: ${({ $isSelected }) => ($isSelected ? "4px 8px" : "0")};
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f1f5f9;
+  }
 `;
 
 export const Input = styled.input`
