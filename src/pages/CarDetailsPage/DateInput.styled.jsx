@@ -29,7 +29,7 @@ export const StyledDateInput = styled.div`
 
   .react-datepicker {
     width: 276px;
-    height: 284px;
+    // height: 284px;
     background-color: var(--white, #ffffff);
     border: 1px solid var(--button, #d0d5dd);
     border-radius: 12px;
@@ -63,6 +63,8 @@ export const StyledDateInput = styled.div`
     justify-content: space-between;
     padding: 0 12px;
     margin-bottom: 8px;
+    width: 252px;
+    height: 14px;
   }
 
   .react-datepicker__day-name {
@@ -82,6 +84,8 @@ export const StyledDateInput = styled.div`
   .react-datepicker__week {
     display: flex;
     justify-content: space-between;
+    width: 252px;
+    height: 32px;
   }
 
   .react-datepicker__day {
