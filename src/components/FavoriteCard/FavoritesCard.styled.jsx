@@ -2,15 +2,18 @@ import styled from "styled-components";
 export const HaveNotFav = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  grid-column: 1 / -1; /* ⬅️ розтягує на всю ширину grid */
 
   margin: 0 auto;
-  width: 50%;
+  width: 100%;
   padding: 40px;
 
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 20px;
+  line-height: 1.4;
+  text-align: center;
 `;
 export const Btn = styled.button`
   display: flex;

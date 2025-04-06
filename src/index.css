@@ -1,15 +1,21 @@
-@import '../node_modules/modern-normalize/modern-normalize.css';
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import "../node_modules/modern-normalize/modern-normalize.css";
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Manrope';
+  font-family: "Manrope";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -42,7 +48,7 @@ h6 {
 
 h1,
 h2 {
-  font-family: 'ManropeSemiBold';
+  font-family: "ManropeSemiBold";
   /* color: #EFEDE8; */
 }
 
@@ -60,7 +66,7 @@ button {
 }
 
 button {
-  font-family: 'ManropeSemiBold';
+  font-family: "ManropeSemiBold";
   font-size: 14px;
   line-height: 143%;
   color: #fff;

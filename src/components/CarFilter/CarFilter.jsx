@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { filterCars, resetCars } from "../../redux/carsThunks";
 import CustomSelect from "./CustomSelect";
 import PriceSelectCustom from "./PriceSelectCustom";
+import { Container } from "../Container/Container.styled";
 
 const CarFilter = ({ resetPage }) => {
   const dispatch = useDispatch();
@@ -93,54 +94,56 @@ const CarFilter = ({ resetPage }) => {
   };
 
   return (
-    <CarForm onSubmit={handleSubmit}>
-      <SelectCarWrapper>
-        <Label htmlFor="makeSelect">Car brand</Label>
-        <CustomSelect
-          options={makeOptions}
-          value={selectedMake}
-          onChange={(option) => setSelectedMake(option.value)}
-          placeholder="Choose a brand"
-        />
-      </SelectCarWrapper>
-
-      <SelectPriceWrapper>
-        <Label htmlFor="priceSelect">Price / 1 hour</Label>
-        <PriceSelectCustom
-          options={priceOptions}
-          value={selectedPrice}
-          onChange={(option) => setSelectedPrice(option.value)}
-          placeholder="Choose a price"
-        />
-      </SelectPriceWrapper>
-
-      <InputMillageWrapper>
-        <Label htmlFor="millage">Car mileage / km</Label>
-        <DivMillage>
-          <InputMillage
-            data-from="true"
-            id="millage"
-            type="text"
-            value={fromMillage}
-            onChange={handleFromMillageChange}
+    <Container>
+      <CarForm onSubmit={handleSubmit}>
+        <SelectCarWrapper>
+          <Label htmlFor="makeSelect">Car brand</Label>
+          <CustomSelect
+            options={makeOptions}
+            value={selectedMake}
+            onChange={(option) => setSelectedMake(option.value)}
+            placeholder="Choose a brand"
           />
-          <InputText data-from="true">From</InputText>
+        </SelectCarWrapper>
 
-          <InputMillage
-            data-to="true"
-            type="text"
-            value={toMillage}
-            onChange={handleToMillageChange}
+        <SelectPriceWrapper>
+          <Label htmlFor="priceSelect">Price / 1 hour</Label>
+          <PriceSelectCustom
+            options={priceOptions}
+            value={selectedPrice}
+            onChange={(option) => setSelectedPrice(option.value)}
+            placeholder="Choose a price"
           />
-          <InputText data-to="true">To</InputText>
-        </DivMillage>
-      </InputMillageWrapper>
+        </SelectPriceWrapper>
 
-      <Btn type="submit">Search</Btn>
-      <Btn type="button" onClick={handleReset}>
-        Reset
-      </Btn>
-    </CarForm>
+        <InputMillageWrapper>
+          <Label htmlFor="millage">Car mileage / km</Label>
+          <DivMillage>
+            <InputMillage
+              data-from="true"
+              id="millage"
+              type="text"
+              value={fromMillage}
+              onChange={handleFromMillageChange}
+            />
+            <InputText data-from="true">From</InputText>
+
+            <InputMillage
+              data-to="true"
+              type="text"
+              value={toMillage}
+              onChange={handleToMillageChange}
+            />
+            <InputText data-to="true">To</InputText>
+          </DivMillage>
+        </InputMillageWrapper>
+
+        <Btn type="submit">Search</Btn>
+        <Btn type="button" onClick={handleReset}>
+          Reset
+        </Btn>
+      </CarForm>
+    </Container>
   );
 };
 

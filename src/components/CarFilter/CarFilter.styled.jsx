@@ -7,6 +7,7 @@ export const CarForm = styled.form`
   width: 924px; /* Згідно з макетом */
   height: 68px; /* Згідно з макетом */
   margin: 0 auto 50px;
+  margin-top: 110px;
 `;
 
 export const Label = styled.label`

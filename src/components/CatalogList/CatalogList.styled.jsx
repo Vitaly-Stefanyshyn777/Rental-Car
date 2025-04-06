@@ -18,6 +18,7 @@ export const HaveNotCars = styled.div`
   height: 100%;
   padding: 40px;
   text-align: center;
+  margin-bottom: 125px; /* 👉 ось відступ знизу */
 
   font-size: 20px;
   font-weight: 600;
@@ -40,7 +41,7 @@ export const LoadMoreBtnWrapper = styled.button`
 
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
-
+  margin-bottom: 125px;
   &:hover {
     background-color: #0b44cd;
 

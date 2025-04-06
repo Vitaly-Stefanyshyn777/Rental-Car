@@ -15,6 +15,7 @@ import {
   getIsLoading,
   getTotalCount,
 } from "../../redux/selectors";
+import { Container } from "../Container/Container.styled";
 
 const PAGE_SIZE = 12;
 
@@ -30,33 +31,35 @@ const CatalogList = ({ incrementPage, page }) => {
   };
 
   return (
-    <ListOfCars>
-      {cars.length > 0 ? (
-        cars.map((car) => <CatalogListItem key={car.id} car={car} />)
-      ) : (
-        <HaveNotCars>Sorry, we don't have any cars like this!</HaveNotCars>
-      )}
+    <Container>
+      <ListOfCars>
+        {cars.length > 0 ? (
+          cars.map((car) => <CatalogListItem key={car.id} car={car} />)
+        ) : (
+          <HaveNotCars>Sorry, we don't have any cars like this!</HaveNotCars>
+        )}
 
-      {!isHideBtn && page < maxPage && (
-        <div
-          style={{
-            gridColumn: "1 / -1",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <LoadMoreBtnWrapper onClick={handleLoadMore}>
-            <LoadMoreText>Load more</LoadMoreText>
-          </LoadMoreBtnWrapper>
-        </div>
-      )}
+        {!isHideBtn && page < maxPage && (
+          <div
+            style={{
+              gridColumn: "1 / -1",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <LoadMoreBtnWrapper onClick={handleLoadMore}>
+              <LoadMoreText>Load more</LoadMoreText>
+            </LoadMoreBtnWrapper>
+          </div>
+        )}
 
-      {isLoading && (
-        <CenteredColorRing>
-          <ColorRing />
-        </CenteredColorRing>
-      )}
-    </ListOfCars>
+        {isLoading && (
+          <CenteredColorRing>
+            <ColorRing />
+          </CenteredColorRing>
+        )}
+      </ListOfCars>
+    </Container>
   );
 };
 
