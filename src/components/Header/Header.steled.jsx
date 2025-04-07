@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export const HeaderWrap = styled.header`
   width: 100%;
-  height: 80px; /* збільшено висоту для відповідності макету */
+  height: 80px;
   background-color: #f7f7fb;
   margin-bottom: 4px;
   display: flex;
@@ -14,7 +14,7 @@ export const HeaderWrap = styled.header`
 export const HeaderInner = styled.div`
   box-sizing: border-box;
   max-width: 1440px;
-  padding: 10px 128px 0; /* додаємо верхній відступ, щоб контент був трохи нижче */
+  padding: 0px 128px 0;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -48,7 +48,7 @@ export const HeaderList = styled.ul`
 
 export const ListItem = styled.li`
   display: flex;
-  align-items: center; /* вирівнюємо елементи по центру */
+  align-items: center;
 `;
 
 export const StyledLink = styled(NavLink)`
