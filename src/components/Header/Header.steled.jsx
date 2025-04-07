@@ -5,6 +5,7 @@ export const HeaderWrap = styled.header`
   width: 100%;
   height: 80px; /* збільшено висоту для відповідності макету */
   background-color: #f7f7fb;
+  margin-bottom: 4px;
   display: flex;
   align-items: center;
   overflow: hidden; /* прибираємо скрол */
