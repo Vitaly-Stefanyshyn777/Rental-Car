@@ -74,7 +74,7 @@ const CatalogListItem = ({ car }) => {
         <List>
           <Item>{city}</Item>
           <Item>{country}</Item>
-          <Item>{car.rentalCompany}</Item>
+          <Item $withDivider>{car.rentalCompany}</Item>
         </List>
 
         <List>
