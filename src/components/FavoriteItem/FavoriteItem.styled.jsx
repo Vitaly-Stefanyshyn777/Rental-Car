@@ -62,7 +62,7 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 4px 6px;
-  margin: 0 0 4px 0;
+
   padding: 0 4px;
   list-style: none;
   font-family: "ManropeRegular", sans-serif;
@@ -71,7 +71,7 @@ export const List = styled.ul`
 export const Item = styled.li`
   font-size: 12px;
   font-weight: 400;
-  line-height: 150%;
+  line-height: 133%;
   color: #8d929a;
   position: relative;
 
