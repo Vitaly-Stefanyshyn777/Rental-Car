@@ -96,7 +96,7 @@ export const BtnMore = styled.button`
   line-height: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 
   &:hover,
   &:focus {
