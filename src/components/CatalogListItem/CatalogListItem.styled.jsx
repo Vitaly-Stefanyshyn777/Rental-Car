@@ -70,7 +70,7 @@ export const List = styled.ul`
 export const Item = styled.li`
   font-size: 12px;
   font-weight: 400;
-  line-height: 150%;
+  line-height: 133%;
   color: #8d929a;
   position: relative;
 
