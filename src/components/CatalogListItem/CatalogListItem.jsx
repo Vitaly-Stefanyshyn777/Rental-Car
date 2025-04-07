@@ -66,7 +66,7 @@ const CatalogListItem = ({ car }) => {
       <TextInfoBlock>
         <FlexWrap>
           <Subtitle>
-            {car.make} <Year>{car.model}</Year>, {car.year}
+            {car.brand} <Year>{car.model}</Year>, {car.year}
           </Subtitle>
           <p>${car.rentalPrice}</p>
         </FlexWrap>

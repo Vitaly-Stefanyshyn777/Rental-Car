@@ -102,7 +102,7 @@ const CarDetailsPage = () => {
             car.img ||
             "https://www.auto123.com/static/auto123/images/unknown.692d9ec5c563.png"
           }
-          alt={`${car.make} ${car.model}`}
+          alt={`${car.brand}${car.model}`}
         />
 
         <BookingCard>
@@ -155,7 +155,7 @@ const CarDetailsPage = () => {
       <RightWrapper>
         <CarHeaderInfo>
           <CarTitle>
-            {car.make} {car.model}, {car.year}
+            {car.brand} {car.model}, {car.year}
             <CarId>Id: {car.id.slice(0, 4)}</CarId>
           </CarTitle>
           <CarSubtitle>
