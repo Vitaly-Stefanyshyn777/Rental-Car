@@ -41,7 +41,7 @@ export const FlexWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 14px 0 8px 0;
+  margin: 16px 0 8px 0;
   padding: 0 4px;
 `;
 
@@ -105,7 +105,6 @@ export const BtnMore = styled.button`
 `;
 
 export const TextInfoBlock = styled.div`
-  padding: 14px 4px 0; /* верх + боки, знизу прибрано */
   display: flex;
   flex-direction: column;
   gap: 4px;
