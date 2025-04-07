@@ -5,7 +5,6 @@ export const CardWrap = styled.div`
   width: 274px;
   border-radius: 14px;
   background-color: #ffffff;
-  overflow: hidden;
 `;
 
 export const ImgWrapper = styled.div`
@@ -96,7 +95,6 @@ export const BtnMore = styled.button`
   line-height: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 6px;
 
   &:hover,
   &:focus {

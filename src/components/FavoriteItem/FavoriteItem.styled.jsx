@@ -5,7 +5,6 @@ export const CardWrap = styled.div`
   width: 274px;
   border-radius: 14px;
   background-color: #ffffff;
-  overflow: hidden;
 `;
 
 export const ImgWrapper = styled.div`
