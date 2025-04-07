@@ -80,16 +80,6 @@ export const Item = styled.li`
     margin-right: 6px;
     color: rgba(18, 20, 23, 0.3);
   }
-
-  ${({ $withDivider }) =>
-    $withDivider &&
-    css`
-      &::after {
-        content: "|";
-        margin-left: 6px;
-        color: rgba(18, 20, 23, 0.3);
-      }
-    `}
 `;
 
 export const BtnMore = styled.button`
