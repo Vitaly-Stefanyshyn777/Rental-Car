@@ -166,7 +166,9 @@ const CarDetailsPage = () => {
               {city}, {country} | Mileage: {exampleMileage}
             </ListItem>
           </CarSubtitle>
-          <Price>{car.rentalPrice || "$40"}</Price>
+          <Price>
+            {car.rentalPrice ? `$${car.rentalPrice.replace(/^\$/, "")}` : "$40"}
+          </Price>
           <Description>{exampleDescription}</Description>
         </CarHeaderInfo>
         <CarInfoSection>
