@@ -36,17 +36,18 @@ export const LoadMoreBtnWrapper = styled.button`
   align-items: center;
 
   background-color: #ffffff;
-  border: 1px solid #0b44cd;
+  border: 1px solid #3470ff;
   border-radius: 12px;
 
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   margin-bottom: 125px;
   &:hover {
-    background-color: #0b44cd;
+    background-color: #ffffff;
+    border: 1px solid #0b44cd;
 
     span {
-      color: #ffffff;
+      color: #101828;
     }
   }
 
