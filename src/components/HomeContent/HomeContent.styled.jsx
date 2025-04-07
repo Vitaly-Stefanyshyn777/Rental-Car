@@ -3,36 +3,18 @@ import { Link } from "react-router-dom";
 
 export const H1 = styled.h1`
   font-weight: 700;
-  font-size: 56px;
-  line-height: 1.2;
+  font-size: 60px;
+  line-height: 120%;
   color: #fff;
   margin-bottom: 16px;
-  text-align: center;
-`;
-
-export const H2 = styled.h2`
-  padding: 14px;
-  background-color: #f7f7fb;
-  border-radius: 15px;
-  margin-bottom: 10px;
-`;
-
-export const DataImg = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  min-height: 700px;
-  padding: 0 16px;
-  color: #ffffff;
   text-align: center;
 `;
 
 export const TitleWrap = styled.div`
   margin: 0 auto 24px;
   width: 100%;
+  height: 700px; /* Фіксована висота для фонового блоку */
+  overflow: hidden;
   background-image: url("/hero-image.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -41,41 +23,44 @@ export const TitleWrap = styled.div`
   z-index: 1;
 `;
 
-export const Section = styled.section`
-  margin-bottom: 24px;
-`;
-
-export const SocialList = styled.ul`
+export const DataImg = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 24px;
-
-  & > li {
-    padding: 10px;
-    background-color: #f7f7fb;
-    border-radius: 15px;
-  }
+  flex-direction: column;
+  justify-content: flex-end; /* Вирівнюємо контент донизу */
+  align-items: center;
+  width: 100%;
+  height: 100%; /* Заповнює всю висоту TitleWrap */
+  padding-bottom: 80px; /* Відступ від нижнього краю */
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
 `;
 
 export const RentalLink = styled(Link)`
-  padding: 12px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 276px;
+  height: 44px;
   border-radius: 12px;
   background: #3470ff;
-  color: #ffffff;
-  font-family: Manrope, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
   text-decoration: none;
-  display: inline-block;
   position: relative;
   z-index: 2;
   transition: background 250ms ease;
+  margin: 0 auto; /* Центруємо кнопку */
 
   &:hover,
   &:focus {
     background: #0b44cd;
+  }
+
+  /* Стилі тексту в кнопці */
+  span {
+    font-family: var(--font-family, "Manrope"), sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: #fff;
   }
 `;

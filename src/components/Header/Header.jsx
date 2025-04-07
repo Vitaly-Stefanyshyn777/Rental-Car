@@ -1,3 +1,4 @@
+import React from "react";
 import {
   HeaderWrap,
   HeaderInner,
@@ -6,6 +7,14 @@ import {
   StyledLink,
   LogoLink,
 } from "./Header.steled";
+// import {
+//   HeaderWrap,
+//   HeaderInner,
+//   HeaderList,
+//   ListItem,
+//   StyledLink,
+//   LogoLink,
+// } from "./Header.styled";
 
 export const Header = () => {
   return (
